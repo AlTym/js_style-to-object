@@ -8,19 +8,19 @@
 function convertToObject(sourceString) {
   const stylesObject = {};
 
-  for (const el of sourceString.split(';')) {
+  sourceString.split(';').map((el) => {
     if (!el.includes(':')) {
-      continue;
+      return null;
     }
 
     const [name, value] = el.split(':');
 
     if (!name || !value) {
-      continue;
+      return null;
     }
 
     stylesObject[name.trim()] = value.trim();
-  }
+  });
 
   return stylesObject;
 }
